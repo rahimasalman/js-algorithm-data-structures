@@ -20,7 +20,7 @@ class LinkedList {
     getSize() {
         return this.size;
     }
-
+    //  Big(O) - O(1)
     /* Linked list - Prepend */
     prepend(value) {
         const node = new Node(value);
@@ -49,6 +49,25 @@ class LinkedList {
             console.log(listValues);
         }
     }
+
+    //  Big(O) - O(n)
+    /* Linked list - Append */
+    append(value) {
+        const node = new Node(value);
+        // (Empty list)
+          if(this.isEmpty()) {
+              this.head = node;
+          }
+        // (Existing list)
+        else {
+            let prev = this.head;
+            while (prev.next) {
+                prev = prev.next;
+            }
+            prev.next = node;
+          }
+          this.size ++;
+    }
 }
 
 const list = new LinkedList();
@@ -65,3 +84,7 @@ list.prepend(200);
 list.prepend(300);
 
 list.print();
+
+list.append(400);
+list.print();
+
