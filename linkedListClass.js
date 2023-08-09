@@ -68,6 +68,34 @@ class LinkedList {
           }
           this.size ++;
     }
+
+    /* Linked list - Insertion */
+
+    insert(value, index) {
+
+        // (Invalid index)
+        if(index < 0 || index > this.size) {
+            console.log('this index does not exist!')
+            return;
+        }
+
+        // (index = 0)
+        if(index === 0) {
+            this.prepend(value);
+        }
+
+        // (index > 0)
+        else {
+            const node = new Node(value);
+            let prev = this.head;
+            for(let i = 0; i < index-1; i++) {
+                prev = prev.next;
+            }
+            node.next = prev.next; // which will ensure the new node is connected to the existing list
+            prev.next = node;
+            this.size ++;
+        }
+    }
 }
 
 const list = new LinkedList();
@@ -82,9 +110,18 @@ list.print();
 
 list.prepend(200);
 list.prepend(300);
-
 list.print();
 
-list.append(400);
+// append
+list.append(600);
 list.print();
 
+// insertion
+list.insert(400,3);
+list.insert(500,4);
+list.print();
+list.insert(500,7);
+list.print();
+list.insert(500,-6);
+list.print();
+console.log(list.getSize());
