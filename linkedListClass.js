@@ -75,7 +75,7 @@ class LinkedList {
 
         // (Invalid index)
         if(index < 0 || index > this.size) {
-            console.log('this index does not exist!')
+            console.log('This index does not exist!');
             return;
         }
 
@@ -95,6 +95,31 @@ class LinkedList {
             prev.next = node;
             this.size ++;
         }
+    }
+
+    /* Linked list - Remove */
+
+    removeFrom(index) {
+        if(index < 0 || index >= this.size) {
+            console.log('This index does not exist!')
+            return null;
+        }
+        let removedNode;
+        if(index === 0) {
+            removedNode = this.head;
+            this.head = this.head.next;
+        }
+
+        else {
+            let prev = this.head;
+            for(let i = 0; i < index - 1; i++) {
+               prev = prev.next;
+            }
+            removedNode = prev.next;
+            prev.next = removedNode.next;
+        }
+        this.size--;
+        return removedNode.value;
     }
 }
 
@@ -125,3 +150,12 @@ list.print();
 list.insert(500,-6);
 list.print();
 console.log(list.getSize());
+
+console.log('This is removeFrom method!');
+
+list.removeFrom(3);
+list.removeFrom(8);
+list.removeFrom(10);
+list.print();
+console.log(list.getSize());
+
