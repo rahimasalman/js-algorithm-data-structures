@@ -129,10 +129,12 @@ class LinkedList {
             return null;
         }
         if(this.head.value === value) {
+            // Big(O) = O(1)
             this.head = this.head.next;
             this.size--;
             return value;
         } else {
+            // Big(O) = O(n)
             let removedNode;
             let prev = this.head;
             while(prev.next && prev.next.value !== value) {
