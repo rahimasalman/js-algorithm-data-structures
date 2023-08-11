@@ -121,6 +121,33 @@ class LinkedList {
         this.size--;
         return removedNode.value;
     }
+
+    /* Linked list - Remove value */
+
+    removeValue(value) {
+        if(this.isEmpty()) {
+            return null;
+        }
+        if(this.head.value === value) {
+            this.head = this.head.next;
+            this.size--;
+            return value;
+        } else {
+            let removedNode;
+            let prev = this.head;
+            while(prev.next && prev.next.value !== value) {
+                prev = prev.next;
+            }
+            if(prev.next) {
+                removedNode = prev.next
+                prev.next = removedNode.next;
+                this.size--;
+                return value;
+            }
+            return null;
+        }
+}
+
 }
 
 const list = new LinkedList();
@@ -160,3 +187,13 @@ console.log(list.removeFrom(-6));
 list.print();
 console.log(list.getSize());
 
+
+console.log('This is removeValue method!');
+list.print()
+
+console.log(list.removeValue(1000));
+console.log(list.removeValue(200));
+
+console.log(list.getSize());
+
+list.print();
