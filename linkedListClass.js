@@ -75,7 +75,7 @@ class LinkedList {
 
         // (Invalid index)
         if(index < 0 || index > this.size) {
-            console.log('this index does not exist!')
+            console.log('This index does not exist!');
             return;
         }
 
@@ -96,6 +96,60 @@ class LinkedList {
             this.size ++;
         }
     }
+
+    /* Linked list - Remove */
+
+    removeFrom(index) {
+        if(index < 0 || index >= this.size) {
+            console.log('This index does not exist!')
+            return null;
+        }
+        let removedNode;
+        if(index === 0) {
+            removedNode = this.head;
+            this.head = this.head.next;
+        }
+
+        else {
+            let prev = this.head;
+            for(let i = 0; i < index - 1; i++) {
+               prev = prev.next;
+            }
+            removedNode = prev.next;
+            prev.next = removedNode.next;
+        }
+        this.size--;
+        return removedNode.value;
+    }
+
+    /* Linked list - Remove value */
+
+    removeValue(value) {
+        if(this.isEmpty()) {
+            return null;
+        }
+        if(this.head.value === value) {
+            // Big(O) = O(1)
+            this.head = this.head.next;
+            this.size--;
+            return value;
+        } else {
+            // Big(O) = O(n)
+            let removedNode;
+            let prev = this.head;
+            while(prev.next && prev.next.value !== value) {
+                prev = prev.next;
+            }
+            if(prev.next) {
+                removedNode = prev.next
+                prev.next = removedNode.next;
+                this.size--;
+                return value;
+            }
+            return null;
+        }
+}
+
 }
 
 const list = new LinkedList();
@@ -125,3 +179,23 @@ list.print();
 list.insert(500,-6);
 list.print();
 console.log(list.getSize());
+
+console.log('This is removeFrom method!');
+
+list.removeFrom(3);
+console.log(list.removeFrom(8));
+console.log(list.removeFrom(-6));
+
+list.print();
+console.log(list.getSize());
+
+
+console.log('This is removeValue method!');
+list.print()
+
+console.log(list.removeValue(1000));
+console.log(list.removeValue(200));
+
+console.log(list.getSize());
+
+list.print();
