@@ -154,8 +154,9 @@ console.log(list.getSize());
 console.log('This is removeFrom method!');
 
 list.removeFrom(3);
-list.removeFrom(8);
-list.removeFrom(10);
+console.log(list.removeFrom(8));
+console.log(list.removeFrom(-6));
+
 list.print();
 console.log(list.getSize());
 
