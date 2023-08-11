@@ -150,6 +150,35 @@ class LinkedList {
         }
 }
 
+    /* Linked list - Search */
+    search(value) {
+        if(this.isEmpty()) {
+            return -1;
+        }
+        let i = 0;
+        let curr = this.head;
+        while(curr) {
+            if(curr.value === value) {
+                return i;
+            }
+            curr = curr.next;
+            i++;
+        }
+        return -1;
+    }
+
+    /* Linked list - Reverse */
+    reverse() {
+        let prev = null;
+        let curr = this.head;
+        while(curr) {
+            let next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        this.head = prev;
+    }
 }
 
 const list = new LinkedList();
@@ -198,4 +227,17 @@ console.log(list.removeValue(200));
 
 console.log(list.getSize());
 
+list.print();
+
+
+console.log('This is search method!');
+list.print()
+
+console.log(list.search(1000));
+console.log(list.search(600));
+
+list.print();
+
+console.log('This is reverse method!');
+list.reverse();
 list.print();
