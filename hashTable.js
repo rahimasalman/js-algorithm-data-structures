@@ -50,3 +50,6 @@ table.display();
 console.log('remove ----');
 table.remove('it');
 table.display();
+
+table.set('en', 'Spain'); // this is called collision
+table.display();
