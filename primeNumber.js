@@ -18,7 +18,7 @@ function isPrime(n) {
     //    }
     // }
     //     return true;  // This is more optimal
-};
+}
 
 console.log(isPrime(0));
 console.log(isPrime(1));
